@@ -1,4 +1,4 @@
-import dash
+from dash import *
 import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt 
@@ -30,7 +30,7 @@ all_preexistentes = [estado_sp, municipios_sp,preexistentes_0,preexistentes_1,pr
 doencas_pre_existentes = pd.concat(all_preexistentes)
 
 
-"""listadados = [estado_sp, municipios_sp, doencas_pre_existentes]
+listadados = [estado_sp, municipios_sp, doencas_pre_existentes]
 dados = pd.DataFrame(pd.concat(listadados))
 
 relacao_casos_obitos = pd.read_csv('Dados-covid-19-estado.csv')
@@ -66,25 +66,82 @@ obitos_por_dia = relacao_casos_obitos['obitos_por_dia']
 app = dash.Dash(__name__)
 
 app.layout = html.Div(
-    children=[
-        html.H1("Dashboard de COVID-19"),
-        dcc.Graph(
-            id="grafico-barras-agrupadas",
-            figure=go.Figure(
-                data=[
-                    go.Bar(x=relacao_casos_obitos.index, y=casos_por_dia, name='Casos por dia'),
-                    go.Bar(x=relacao_casos_obitos.index, y=obitos_por_dia, name='Óbitos por dia')
-                ],
-                layout=go.Layout(
-                    title='Casos por dia e Óbitos por dia',
-                    barmode='group'
-                )
-            )
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+        ]
         )
-    ]
+    )
+
+app.layout = html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+app.layout= html.Div(
+        html.Div([
+        html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+        dcc.Dropdown("""DATAFRAME""".country.unique(), """VALOR INICIAL""", id='dropdown-selection'),
+        dcc.Graph(id='graph-content')
+    ])
+    )
+
+
+"""
+@callback(
+    Output('graph-content', 'figure'),
+    Input('dropdown-selection', 'value')
 )
+def update_graph(value):
+    dff = df[df.country==value]
+    return px.line(dff, x='year', y='pop')"""
+
+
+
+
 
 # Executar o dashboard
 if __name__ == '__main__':
     app.run_server(debug=True)
-"""
